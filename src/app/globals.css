@@ -2,24 +2,19 @@
 
 @theme inline {
   --color-primary: #1A1A1A;
-  --color-accent: #C9A96E;
-  --color-accent-hover: #D4B97E;
-  --color-muted: #8A7D6B;
+  --color-accent: #FF1493;
+  --color-accent-hover: #FF69B4;
+  --color-muted: #B0608A;
   --color-surface: #F5F0E8;
   --color-bg: #1A1A1A;
   --font-sans: "Outfit", "Noto Sans Thai", Arial, sans-serif;
   --font-serif: "Cormorant Garamond", Georgia, serif;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Smooth scroll matching Lenis (duration: 1.5s, exponential ease) */
+/* Smooth scroll with offset for fixed navbar */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 72px;
 }
 
 body {
@@ -34,6 +29,12 @@ body {
 /* Global link/button hover transition (matches original 0.3s all) */
 a, button {
   transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Focus-visible gold ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #FF1493;
+  outline-offset: 2px;
 }
 
 /* Marquee animation */
@@ -69,8 +70,8 @@ a, button {
 
 /* Pulse animation for interactive dots */
 @keyframes pulse-dot {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.1); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
 }
 
 .animate-pulse-dot {
@@ -80,6 +81,7 @@ a, button {
 .animate-pulse-dot:hover,
 .animate-pulse-dot:focus {
   animation: none;
+  box-shadow: 0 0 0 0 transparent;
 }
 
 /* Horizontal scroll for services (grab cursor matching original Flickity) */
