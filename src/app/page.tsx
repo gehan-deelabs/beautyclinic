@@ -209,7 +209,6 @@ export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   // Preloader with counter animation (matches original's GSAP counter 0→100)
   useEffect(() => {
@@ -342,15 +341,12 @@ export default function Home() {
 
       {/* ═══ SECTION 1: HERO (sticky content wrapper matching original) ═══ */}
       <div ref={heroRef} className="relative">
-        <motion.section style={{ opacity: heroOpacity, scale: heroScale }} className="sticky top-0 h-screen overflow-hidden">
+        <motion.section style={{ opacity: heroOpacity }} className="sticky top-0 h-screen overflow-hidden">
           {/* Background image */}
           <div
             className="absolute inset-0 bg-cover"
             style={{ backgroundImage: `url(${IMAGES.heroBg})`, backgroundPosition: "50% 33%" }}
           />
-          {/* Gradient overlays matching original */}
-          <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 50% 0%, rgba(14,10,7,0.5) 19%, transparent)" }} />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 37%, #7A6047 66%)" }} />
           {/* Content wrapper */}
           <div className="relative z-[2] flex items-center justify-center h-full px-[5%]">
             <div className="text-center w-full">
@@ -378,16 +374,25 @@ export default function Home() {
             </div>
           </motion.div>
         </motion.section>
-        {/* Spacer for scroll parallax */}
-        <div className="h-[50vh]" />
+        {/* Spacer with gradient transition into next section */}
+        <div className="h-[5vh] relative z-10 bg-[#7A6047]" />
       </div>
 
-      {/* ═══ SECTION 2: QUOTE (char-by-char reveal matching par.4) ═══ */}
-      <section className="relative py-28 md:py-40 bg-[#7A6047] overflow-hidden">
+      {/* ═══ SECTION 2: QUOTE (char-by-char reveal + scroll-triggered shading) ═══ */}
+      <section className="relative min-h-screen flex items-center justify-center bg-[#7A6047] overflow-hidden">
+        {/* Shading overlay that fades in on scroll — uses same brown family */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-10% 0px" }}
+          transition={{ duration: 1.2, ease: EASE.power2Out }}
+          className="absolute inset-0 z-0"
+          style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(60,45,30,0.4) 0%, rgba(60,45,30,0.15) 50%, transparent 80%)" }}
+        />
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <SplitText
             as="h2"
-            className="text-2xl md:text-[40px] leading-[48px] text-white font-medium"
+            className="text-2xl md:text-[40px] leading-[48px] text-white font-medium drop-shadow-[0_2px_12px_rgba(0,0,0,0.3)]"
             style={{ fontFamily: "var(--font-serif)" }}
             staggerAmount={1.2}
             duration={0.15}
@@ -399,7 +404,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20% 0px" }}
             transition={{ duration: 0.8, delay: 1.4, ease: EASE.power1Out }}
-            className="mt-6 block tracking-[0.3em] text-lg md:text-xl font-light text-white"
+            className="mt-6 block tracking-[0.3em] text-lg md:text-xl font-light text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
             style={{ fontFamily: "var(--font-sans)" }}
           >
             EVER
