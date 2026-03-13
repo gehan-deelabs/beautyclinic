@@ -7,35 +7,35 @@ import { motion, AnimatePresence, useScroll, useTransform, useInView } from "mot
 const CDN = "https://cdn.prod.website-files.com/67f28d1d69b4c6d58d1cd1da";
 
 const IMAGES = {
-  heroModel: `${CDN}/68039fa1a0e0fa652a7bf2e6_EVER%20MODEL.avif`,
-  heroBg: `${CDN}/68415b4f7bd03284c234c368_Ever-Beauty-in-Every-detail-Home-Page-Main-Header.avif`,
+  heroModel: "/images/hero-model.png",
+  heroBg: "/images/hero-bg.png",
   texture1: `${CDN}/67fc99648e532fe1d1c1dbbb_EVER%20textureArtboard%201.avif`,
   texture2: `${CDN}/67fc99642ea14342e387c3b6_EVER%20textureArtboard%202.avif`,
   texture3: `${CDN}/67fc9964ad82dcc3c1c1b803_EVER%20textureArtboard%203.avif`,
   texture4: `${CDN}/67fc99642ea14342e387c395_EVER%20textureArtboard%204.avif`,
   texture5: `${CDN}/67fc9963ec1abbe58913940b_EVER%20textureArtboard%205.avif`,
   texture6: `${CDN}/67fc99641af666a7c4c891cb_EVER%20textureArtboard%206.avif`,
-  serviceLash: `${CDN}/68092b90ba9824ac1fa312d8_Homepage%204%20sub%20brands%201%20lash-01.avif`,
-  serviceBrow: `${CDN}/68092b91a096d664273c7dbb_Homepage%204%20sub%20brands%202%20brow-03.avif`,
-  serviceNails: `${CDN}/68092b90878debf5a19df031_Homepage%204%20sub%20brands%203%20nails-05.avif`,
-  serviceWax: `${CDN}/68092b9616b179405339e6e5_Homepage%204%20sub%20brands%204%20wax-07.avif`,
-  serviceSpmu: `${CDN}/68092b90d0c264fb1d93e744_Homepage%204%20sub%20brands%205%20spmu-09.avif`,
-  serviceBody: `${CDN}/68092b90de9ad3a3d272cb97_Homepage%204%20sub%20brands%206%20body-11.avif`,
-  serviceHouse: `${CDN}/68092b900fbd0c2d76c3cabb_Homepage%204%20sub%20brands%207%20house-13.avif`,
-  logoEverlash: `${CDN}/68dcc1fe813371e19577851a_LOGO_everlash%20white.png`,
-  logoEverbrow: `${CDN}/68dcc1fe83a5dcfaa99ad604_LOGO_everbrow%20white.png`,
-  logoEvernails: `${CDN}/68dcc1feb918f902d60f0dba_LOGO_evernails%20white.png`,
-  logoEverwax: `${CDN}/68dcc1fe66ede1a6313c3a72_LOGO_everwax%20white.png`,
-  logoEverspmu: `${CDN}/68dcc1fe2f30870578ab2417_LOGO_ever%20spmu%20white.png`,
-  logoEverbody: `${CDN}/68dcc1fef60130dc3075d511_LOGO_everbody%20white.png`,
-  logoEverhouse: `${CDN}/68dcc1fe5e4b5e8c0aa27a45_LOGO_everhouse%20white.png`,
-  ctaBg: `${CDN}/680a05f1151954a6decd8b99_Homepage%207%20CTA-02.avif`,
-  landscape1: `${CDN}/680f8fc9c7d50b5964c6a1d6_Homepage%202%20sub%20brands%20landscape-01.avif`,
-  landscape2: `${CDN}/680ef52a6fd30b4b5834ff11_Homepage%202%20sub%20brands-02.avif`,
-  landscape3: `${CDN}/680f8fc98619cec721bb7be0_Homepage%202%20sub%20brands%20landscape-02.avif`,
-  landscape4: `${CDN}/680f8fc9f231182fa56d8bb8_Homepage%202%20sub%20brands%20landscape-03.avif`,
-  landscape5: `${CDN}/680f8fc98572a00d8f060613_Homepage%202%20sub%20brands%20landscape-04.avif`,
-  landscape6: `${CDN}/680f8fc98572a00d8f06062a_Homepage%202%20sub%20brands%20landscape-05.avif`,
+  serviceLash: "/images/service-lash.png",
+  serviceBrow: "/images/service-brow.png",
+  serviceNails: "/images/service-nails.png",
+  serviceWax: "/images/service-wax.png",
+  serviceSpmu: "/images/service-spmu.png",
+  serviceBody: "/images/service-body.png",
+  serviceHouse: "/images/service-house.png",
+  logoEverlash: "SIAM LASH",
+  logoEverbrow: "SIAM BROW",
+  logoEvernails: "SIAM NAILS",
+  logoEverwax: "SIAM WAX",
+  logoEverspmu: "SIAM SPMU",
+  logoEverbody: "SIAM BODY",
+  logoEverhouse: "SIAM HOUSE",
+  ctaBg: "/images/hero-bg.png",
+  landscape1: "/images/landscape-1.png",
+  landscape2: "/images/landscape-2.png",
+  landscape3: "/images/landscape-3.png",
+  landscape4: "/images/landscape-4.png",
+  landscape5: "/images/landscape-5.png",
+  landscape6: "/images/landscape-6.png",
 };
 
 const VIDEO = {
@@ -428,16 +428,15 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-500" />
                 <div className="absolute inset-0 flex items-center justify-center p-4">
-                  <motion.img
-                    src={brand.logo}
-                    alt={brand.name}
+                  <motion.span
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.3 + i * 0.08, ease: EASE.power1Out }}
-                    className="w-[70%] h-auto object-contain"
-                    loading="lazy"
-                  />
+                    className="text-white text-xl md:text-2xl font-serif font-light tracking-[0.2em] uppercase"
+                  >
+                    {brand.logo}
+                  </motion.span>
                 </div>
               </div>
             </motion.div>
