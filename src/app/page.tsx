@@ -124,6 +124,7 @@ const CARD_STEP = CARD_WIDTH + CARD_GAP;
 const AUTO_SPEED = 0.5; // px per frame (~30px/s)
 
 function GallerySection() {
+  const [mounted, setMounted] = useState(false);
   const [scrollX, setScrollX] = useState(0);
   const isDragging = useRef(false);
   const dragStartX = useRef(0);
@@ -135,6 +136,9 @@ function GallerySection() {
   const isMomentum = useRef(false);
   const count = galleryBrands.length;
   const totalWidth = count * CARD_STEP;
+
+  // Mark as mounted to avoid hydration mismatch from window.innerWidth
+  useEffect(() => setMounted(true), []);
 
   // Auto-scroll: runs when not dragging and no momentum
   useEffect(() => {
@@ -233,7 +237,7 @@ function GallerySection() {
         className="relative h-[420px] md:h-[560px] select-none cursor-grab active:cursor-grabbing"
         style={{ touchAction: "pan-y" }}
       >
-        {galleryBrands.map((brand, i) => {
+        {mounted && galleryBrands.map((brand, i) => {
           const { x, rotate, translateY, imgTranslateX, visible } = getCardProps(i);
           if (!visible) return null;
           return (
@@ -406,7 +410,7 @@ export default function Home() {
     const colorMap: [React.RefObject<HTMLElement | HTMLDivElement | null>, string][] = [
       [gallerySectionRef, "#F0EAE0"],
       [modelSectionRef, "#F0EAE0"],
-      [servicesSectionRef, "#FEFCF9"],
+      [servicesSectionRef, "#E8F1F6"],
       [faqSectionRef, "#F0EAE0"],
     ];
 
