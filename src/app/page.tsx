@@ -374,21 +374,13 @@ export default function Home() {
             </div>
           </motion.div>
         </motion.section>
-        {/* Spacer with gradient transition into next section */}
-        <div className="h-[5vh] relative z-10 bg-[#7A6047]" />
-      </div>
-
-      {/* ═══ SECTION 2: QUOTE (char-by-char reveal + scroll-triggered shading) ═══ */}
-      <section className="relative min-h-screen flex items-center justify-center bg-[#7A6047] overflow-hidden">
-        {/* Shading overlay that fades in on scroll — uses same brown family */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-10% 0px" }}
-          transition={{ duration: 1.2, ease: EASE.power2Out }}
-          className="absolute inset-0 z-0"
-          style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(60,45,30,0.4) 0%, rgba(60,45,30,0.15) 50%, transparent 80%)" }}
-        />
+        {/* Quote section overlaps hero — no spacer, hero image bleeds through */}
+        <section className="relative z-10 min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Dark gradient overlay so text is readable over hero image */}
+          <div
+            className="absolute inset-0 z-0"
+            style={{ background: "linear-gradient(180deg, transparent 0%, rgba(50,35,20,0.4) 20%, rgba(50,35,20,0.7) 40%, rgba(50,35,20,0.75) 55%, rgba(80,60,40,0.8) 75%, rgba(122,96,71,1) 100%)" }}
+          />
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <SplitText
             as="h2"
@@ -410,7 +402,8 @@ export default function Home() {
             EVER
           </motion.span>
         </div>
-      </section>
+        </section>
+      </div>
 
       {/* ═══ SECTION 3: SUB-BRAND GALLERY (img.1 fade-in + grab cursor) ═══ */}
       <section className="py-8 md:py-12 bg-[#7A6047]">
