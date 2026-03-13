@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #1A1A1A;
-  --color-accent: #FF1493;
-  --color-accent-hover: #FF69B4;
-  --color-muted: #B0608A;
-  --color-surface: #F5F0E8;
-  --color-bg: #1A1A1A;
+  --color-primary: #2C2C2C;
+  --color-accent: #6AADCF;
+  --color-accent-hover: #4D95B8;
+  --color-muted: #8A8A8A;
+  --color-surface: #F0EAE0;
+  --color-bg: #FEFCF9;
   --font-sans: "Outfit", "Noto Sans Thai", Arial, sans-serif;
   --font-serif: "Cormorant Garamond", Georgia, serif;
 }
@@ -18,22 +18,22 @@ html {
 }
 
 body {
-  background: #1A1A1A;
-  color: #F5F0E8;
+  background: #FEFCF9;
+  color: #2C2C2C;
   font-family: "Outfit", "Noto Sans Thai", Arial, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Global link/button hover transition (matches original 0.3s all) */
+/* Global link/button hover transition */
 a, button {
   transition: color 0.3s ease, opacity 0.3s ease;
 }
 
-/* Focus-visible gold ring for keyboard navigation */
+/* Focus-visible ring for keyboard navigation */
 :focus-visible {
-  outline: 2px solid #FF1493;
+  outline: 2px solid #6AADCF;
   outline-offset: 2px;
 }
 
@@ -70,8 +70,8 @@ a, button {
 
 /* Pulse animation for interactive dots */
 @keyframes pulse-dot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
-  50% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(106, 173, 207, 0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(106, 173, 207, 0); }
 }
 
 .animate-pulse-dot {
